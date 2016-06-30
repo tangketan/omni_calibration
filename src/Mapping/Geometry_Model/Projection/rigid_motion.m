@@ -1,4 +1,4 @@
-function [Y,dYdom,dYdT] = rigid_motion(X,om,T);
+function [Y,dYdom,dYdT] = rigid_motion(X,om,T)
 
 %rigid_motion.m
 %

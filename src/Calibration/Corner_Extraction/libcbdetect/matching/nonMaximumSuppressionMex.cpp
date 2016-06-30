@@ -3,6 +3,7 @@
 #include <iostream>
 
 using namespace std;
+typedef int int32_t;
 
 struct maximum {
   int32_t maxi;

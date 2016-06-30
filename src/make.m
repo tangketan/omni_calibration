@@ -15,4 +15,8 @@ cd(path)
 
 make;
 
+path = [p, '/Calibration/Corner_Extraction/libcbdetect/matching'];
+cd(path);
+make;
+
 cd(p);

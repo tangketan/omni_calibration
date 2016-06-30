@@ -143,33 +143,23 @@ elseif (info.method == 12) || (info.method == 16)
     filePath = sprintf('%s/%s', info.filename, fileName);
     fileID = fopen(filePath, 'w');
     
-    for c = params.calib
-    
-        fprintf('\n\n-- Camera %d --\n\n', c);
-        
-        fprintf('xi: [ %s]\n', sprintf('%f ', param.cam{c}.xi));
-        fprintf('gammac: [ %s]\n', sprintf('%f ', param.cam{c}.gammac));
-        fprintf('cc: [ %s]\n', sprintf('%f ', param.cam{c}.cc));
-        fprintf('kc: [ %s]\n', sprintf('%f ', param.cam{c}.kc));
-        fprintf('alphac: [ %s]\n', sprintf('%f ', param.cam{c}.alphac));
-        fprintf('ex_T: [ %s]\n', sprintf('%f ', param.cam{c}.ex_T));
-        fprintf('ex_om: [ %s]\n', sprintf('%f ', param.cam{c}.ex_om));
-        
-        % save to file
-        fprintf(fileID, '-- Camera %d --\n\n', c);
-        
-        fprintf(fileID, 'xi: [ %s]\n', sprintf('%f ', param.cam{c}.xi));
-        fprintf(fileID, 'gammac: [ %s]\n', sprintf('%f ', param.cam{c}.gammac));
-        fprintf(fileID, 'cc: [ %s]\n', sprintf('%f ', param.cam{c}.cc));
-        fprintf(fileID, 'kc: [ %s]\n', sprintf('%f ', param.cam{c}.kc));
-        fprintf(fileID, 'alphac: [ %s]\n', sprintf('%f ', param.cam{c}.alphac));
-        fprintf(fileID, 'ex_T: [ %s]\n', sprintf('%f ', param.cam{c}.ex_T));
-        fprintf(fileID, 'ex_om: [ %s]\n', sprintf('%f ', param.cam{c}.ex_om));
-        
+    for c = params.calib            
+        % print to screen and then save to file
+        for fid=[1,fileID]
+            fprintf(fid, '-- Camera %d --\n\n', c);
+
+            fprintf(fid, 'xi: [ %s]\n', sprintf('%f ', param.cam{c}.xi));
+            fprintf(fid, 'gammac: [ %s]\n', sprintf('%f ', param.cam{c}.gammac));
+            fprintf(fid, 'cc: [ %s]\n', sprintf('%f ', param.cam{c}.cc));
+            fprintf(fid, 'kc: [ %s]\n', sprintf('%f ', param.cam{c}.kc));
+            fprintf(fid, 'alphac: [ %s]\n', sprintf('%f ', param.cam{c}.alphac));
+            fprintf(fid, 'ex_T: [ %s]\n', sprintf('%f ', param.cam{c}.ex_T));
+            fprintf(fid, 'ex_om: [ %s]\n', sprintf('%f ', param.cam{c}.ex_om));
+        end
         fprintf('\nResults saved to file: %s \n', fileName)
     
     end
-          
+    fclose(fileID);      
 end
   
 save( sprintf('%s/calib_%04d.mat', info.filename, info.method), 'params','param','resnorm','active' );

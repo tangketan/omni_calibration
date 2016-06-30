@@ -14,15 +14,15 @@ opts = init();
 % Save the results in the folder
 calib_info.calibration_name = 'Calibration_Omnicam';
 
-mkdir ( sprintf( '%s/data/%s', opts.root_dir, calib_info.calibration_name ));
-calib_info.filename = sprintf('%s/data/%s', opts.root_dir, calib_info.calibration_name );
+calib_info.filename = sprintf('%s/results/%s', opts.root_dir, calib_info.calibration_name );
+mkdir(calib_info.filename);
 
 % Visualization of the results
 calib_info.visualize_error_flag = 1;        % shows the reprojection error
 calib_info.visualize_corners = 1;           % 1 - all reprojection errors in one plot; 2 - one plot for every checkerboard
 
 % Calibration Method
-calib_info.method = 12;         % 1 - 10 Geometric Model (see load_param or Readme for details), 
+calib_info.method = 11;         % 1 - 10 Geometric Model (see load_param or Readme for details), 
                                 % 14 Centered Model,
                                 % 11 Scaramuzza with new initialization 
                                 % 12 Mei Model, 
@@ -39,29 +39,29 @@ calib_info.number_cameras = 1; %2;
 
 %% Image Informations
 % Image path
-calib_info.image_path =  sprintf('%s/../images/imagesBag_30_13_46', opts.root_dir); %sprintf('%s/../images/test', opts.root_dir);%
+calib_info.image_path =  sprintf('%s/../img_para/calibrationdata3', opts.root_dir); %sprintf('%s/../images/test', opts.root_dir);%
 
 % Format of the images
-calib_info.format_image = 'jpg';            
+calib_info.format_image = 'bmp';            
 
 % Name of the images (prefix)
-calib_info.name_cam1 = 'frame';  
-calib_info.name_cam2 = 'right_img_';
+calib_info.name_cam1 = 'left-';  
+calib_info.name_cam2 = 'right-';
 
 % images for calibration (empty = all images, else [1 2 ... n])
 calib_info.ima_numbers = [];
 
 %% Infos concerning the corner detection
-calib_info.dX = 68;            % Size of square in x-direction
-calib_info.dY = 68;            % Size of square in y-direction
+calib_info.dX = 50;            % Size of square in x-direction
+calib_info.dY = 50;            % Size of square in y-direction
 
-calib_info.n_sq_x = 8;          % Number of squares along the X direction
-calib_info.n_sq_y = 5;          % Number of squares along the Y direction
+calib_info.n_sq_x = 13;          % Number of squares along the X direction
+calib_info.n_sq_y = 9;          % Number of squares along the Y direction
 
 calib_info.wintx = 5;           % Size of the window for manual corner detection in x direction
 calib_info.winty = 5;			% Size of the window for manual corner detection in y direction
 
-calib_info.auto_cornerdetection = 0; % 
+calib_info.auto_cornerdetection = 1; % 
 
 %% Initial Mirror/Camera Parameter 
 % Midpoint xc/yc of the image 

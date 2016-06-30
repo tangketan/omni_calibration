@@ -63,7 +63,7 @@ for c = 1 : param.calib
     num_cb = length(cb_idx);
         
     % get board world points
-    nM = 7*5;
+    nM = length(grid{1,c}.Xt);
     PW = zeros(3,num_cb*nM);
     M = [grid{1,c}.Xt';grid{1,c}.Yt';zeros(size(grid{1,c}.Xt))'];
     u = zeros(1,num_cb)';

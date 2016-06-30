@@ -19,11 +19,11 @@ function start_omnical()
         return
     end
 
-    if (exist( sprintf( '%s/data/%s/images.mat', opts.root_dir, info.calibration_name)) ~= 0)
+    if (exist( sprintf( '%s/images.mat', info.filename)) ~= 0)
         
-        imagesCoordinates = load( sprintf( '%s/data/%s/images.mat', opts.root_dir, info.calibration_name));
+        imagesCoordinates = load( sprintf( '%s/images.mat', info.filename));
         images = imagesCoordinates.images;
-        gridCoordinates = load( sprintf( '%s/data/%s/grid.mat', opts.root_dir, info.calibration_name));
+        gridCoordinates = load( sprintf( '%s/grid.mat', info.filename));
         grid = gridCoordinates.grid;
         
         %%% Load Intrinsic parameters
@@ -38,8 +38,8 @@ function start_omnical()
         %%% Check if Corner Extraction was okay
         [images, grid] = check_corner_extraction ( grid, images, info );
         
-        save ( sprintf('%s/data/%s/grid.mat', opts.root_dir, info.calibration_name), 'grid');
-        save ( sprintf('%s/data/%s/images.mat', opts.root_dir, info.calibration_name), 'images');
+        save ( sprintf('%s/grid.mat', info.filename), 'grid');
+        save ( sprintf('%s/images.mat', info.filename), 'images');
       
     else
         %%% load Images
@@ -61,8 +61,8 @@ function start_omnical()
         %%% Check if Corner Extraction was okay
         [images, grid] = check_corner_extraction ( grid, images, info );
         
-        save ( sprintf('%s/data/%s/grid.mat', opts.root_dir, info.calibration_name), 'grid');
-        save ( sprintf('%s/data/%s/images.mat', opts.root_dir, info.calibration_name), 'images');
+        save ( sprintf('%s/grid.mat', info.filename), 'grid');
+        save ( sprintf('%s/images.mat', info.filename), 'images');
 
     end
 

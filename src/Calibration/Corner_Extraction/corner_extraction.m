@@ -50,7 +50,8 @@ for c=1:calib_info.number_cameras
             elseif calib_info.format_image == 'pgm'
                 I = double(loadpgm(img_name));
             else
-                I = rgb2gray(imread(img_name));
+                I = imread(img_name);
+                if size(I,3)>1, I = rgb2gray(I); end
             end
         else
             fprintf(1,'\nWARNING! Images not exist.\n');

@@ -1,7 +1,7 @@
 % Reprojection function: map 3D point to a 2D point
 % Input: 
 %   - param: calibration parameter
-%   - X: 3D points
+%   - X: 3D points (3xN)
 %   - method: calibration method
 %   - cams: number or vector for which camera we compute the image points
 % Output:
